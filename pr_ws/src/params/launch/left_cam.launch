@@ -1,7 +1,7 @@
 <launch>
 
 
-  <node pkg="usb_cam" type="usb_cam_node" name="left" >
+  <node pkg="usb_cam" type="usb_cam_node" name="left" ns="stereo" >
     <remap from="usb_cam" to="odom_wheel" />
     <!--<remap from="imu_data" to="imu" />-->
     <param name="self_diagnose" value="false"/>
