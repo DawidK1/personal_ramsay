@@ -3,6 +3,7 @@
 
   <node pkg="usb_cam" type="usb_cam_node" name="right" ns="stereo">
     <param name="camera_frame_id" value="right"/>
+    <param name="framerate" value="10"/>
     <!--<remap from="odom" to="odom_wheel" />-->
     <!--<remap from="imu_data" to="imu" />-->
     <param name="self_diagnose" value="false"/>

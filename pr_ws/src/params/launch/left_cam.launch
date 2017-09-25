@@ -6,6 +6,7 @@
     <!--<remap from="imu_data" to="imu" />-->
     <param name="camera_frame_id" value="left"/>
     <param name="self_diagnose" value="false"/>
+    <param name="framerate" value="10"/>
   </node>
 
 
