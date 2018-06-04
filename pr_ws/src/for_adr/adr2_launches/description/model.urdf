@@ -1,0 +1,357 @@
+<?xml version="1.0"?>
+<robot name="adr2">
+
+    <link name="base_link">
+   <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="base_link_joint" type="fixed">
+    <origin xyz="0.0 0 0.05" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="base" />
+  </joint>
+
+  
+	<link name="base">
+    <visual>
+      <geometry>
+        <box size="0.4 0.4 0.3"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="1.0 0.0 0.0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.4 0.4 0.3"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="20.0"/>
+      <inertia ixx="0.4166" iyy="0.4166" izz="0.533" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+
+  <joint name="column_joint" type="fixed">
+    <origin xyz="0.0 0 0.375" rpy="0 0 0" />
+    <parent link="base"/>
+    <child link="column" />
+  </joint>
+
+
+
+	<link name="column">
+    <visual>
+      <geometry>
+        <box size="0.4 0.4 0.35"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="1.0 0.0 0.0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.32 0.32 0.35"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="15.0"/>
+      <inertia ixx="0.008" iyy="0.008" izz="0.131" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+
+	<link name="screen">
+    <visual>
+      <geometry>
+        <box size="0.1785 0.255 0.04"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="1.0 0.0 0.0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.255 0.1785 0.04"/>
+      </geometry>
+    </collision>
+
+  </link>
+  <joint name="screen_joint" type="fixed">
+    <origin xyz="0.07 0 0.25" rpy="0 0.8 0" />
+    <parent link="column"/>
+    <child link="screen" />
+  </joint>
+
+
+  <joint name="laser_joint" type="fixed">
+    <origin xyz="0.00 0 0.175" rpy="0 .0 0" />
+    <parent link="base"/>
+    <child link="laser" />
+  </joint>
+
+	<link name="laser">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.05"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="1.0 0.0 0.0 1"/>
+      </material>
+    </visual>
+  </link>
+
+
+  <joint name="camera1_joint" type="fixed">
+    <origin xyz="0.215 0 0.05" rpy="0 .29 0" />
+    <parent link="column"/>
+    <child link="camera1" />
+  </joint>
+
+	<link name="camera1">
+    <visual>
+      <geometry>
+        <box size="0.01 0.15 0.05"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="1.0 0.0 0.0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="camera2_joint" type="fixed">
+    <origin xyz="0.21 0 0.18" rpy="0 -.25 0" />
+    <parent link="column"/>
+    <child link="camera2" />
+  </joint>
+
+	<link name="camera2">
+    <visual>
+      <geometry>
+        <box size="0.01 0.19 0.05"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="1.0 0.0 0.0 1"/>
+      </material>
+    </visual>
+  </link>
+
+<!--WHEELS-->
+
+	<link name="back_right_wheel_sp">
+    <visual>
+      <geometry>
+        <cylinder length="0.001" radius="0.001"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <geometry>
+        <sphere radius="0.0508"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.35"/>
+      <inertia ixx="0.000295835" iyy="0.000451612" izz="0.000295835" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="back_right_wheel_joint_sp" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="back_right_wheel_sp"/>
+    <origin rpy="-1.5708 0 1.5708" xyz="-0.142 -0.1742 -.0578"/>
+  </joint>
+
+
+
+  <link name="front_right_wheel_sp">
+    <visual>
+      <geometry>
+        <cylinder length="0.001" radius="0.001"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <geometry>
+        <sphere radius="0.0508"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+     	<mass value="0.35"/>
+      <inertia ixx="0.000295835" iyy="0.000451612" izz="0.000295835" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="front_right_wheel_joint_sp" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="front_right_wheel_sp"/>
+    <origin rpy="-1.5708 0 1.5708" xyz="-0.142 0.1742 -.0578"/>
+  </joint>
+
+
+
+  <link name="back_left_wheel_sp">
+    <visual>
+      <geometry>
+        <cylinder length="0.001" radius="0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <sphere radius="0.0508"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.35"/>
+      <inertia ixx="0.000295835" iyy="0.000451612" izz="0.000295835" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="back_left_wheel_joint_sp" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="back_left_wheel_sp"/>
+    <origin rpy="-1.5708 0 1.5708" xyz="0.142 -0.1742 -.0578"/>
+  </joint>
+
+
+
+	<link name="front_left_wheel_sp">
+    <visual>
+      <geometry>
+        <cylinder length="0.001" radius="0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  
+
+    <collision>
+      <geometry>
+        <sphere radius="0.0508"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.35"/>
+      <inertia ixx="0.000295835" iyy="0.000451612" izz="0.000295835" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="front_left_wheel_joint_sp" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="front_left_wheel_sp"/>
+    <origin rpy="-1.5708 0 1.5708" xyz="0.142 0.1742 -.0578"/>
+  </joint>
+
+
+
+
+
+
+
+<!--MOTORS-->
+	<gazebo>
+    <plugin name='object_controller' filename='libgazebo_ros_force_based_move.so'>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>20.0</odometryRate>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishOdometryTf>True</publishOdometryTf>
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+
+<!--LASER-->
+  <gazebo reference="laser">
+    <sensor type="ray" name="head_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14</min_angle>
+            <max_angle>3.14</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.12</min>
+          <max>15.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+<!--CAMERA1 - FRONT-->
+
+
+  <gazebo reference="camera1">
+    <sensor type="camera" name="camera1">
+      <update_rate>30.0</update_rate>
+      <camera name="camera1">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+
+    </sensor>
+  </gazebo>
+
+
+
+
+
+
+
+
+
+
+
+</robot>
+
+
